@@ -12,7 +12,7 @@ body {
     position: relative;
 }
 h1 {
-    color: #000000; /* Warna judul */
+    color: #000000; /* warna judul */
 }
 .buttons {
     margin-top: 20px;
@@ -33,5 +33,5 @@ button {
 #tombolno {
     background-color: #f44336;
     color: white;
-    position: absolute; /* gak juga, tergantung js */
+    position: absolute; /* gak juga kata js */
 }
