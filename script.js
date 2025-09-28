@@ -1,35 +1,33 @@
 const tombolno = document.getElementById('tombolno');
 const tombolyes = document.getElementById('tombolyes');
 
-// biar tombolnya bisa lari
+// kalo tombol no dideketin cursor
 tombolno.addEventListener('mouseover', () => {
-    // kata ai sih ini biar tombolnya ga lari kemana-mana pas di zoom out (makasih ai soalnya gapaham)
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
+    // kata AI sih ini biar tombolnya ga lari kemana-mana pas di zoom out (makasih AI soalnya gapaham)
+    // inisialisasi
+    const lebar = window.innerWidth;
+    const tinggi = window.innerHeight;
+    const LebarTombol = tombolno.offsetWidth;
+    const TinggiTombol = tombolyes.offsetHeight;
+    const LebarLari = 500; // Lebar, ini buat laptop btw
+    const TinggiLari = 300; // Tinggi, kalo buat hp ini dinaikin
+    // rencana mau bikin lebar/tinggi versi hp disini, tapi dicoba di hp gak masalah tadi
 
-    // deklarasi ukuran tombol
-    const btnWidth = tombolno.offsetWidth;
-    const btnHeight = tombolyes.offsetHeight;
-    
-    // inisialisasi area lari
-    const runawayZoneWidth = 500; // Lebar
-    const runawayZoneHeight = 300; // Tinggi
+    // titik tengah area tombolnya lari
+    const AreaX = (lebar - LebarLari) / 2;
+    const AreaY = (tinggi - TinggiLari) / 2;
 
-    // Hitung posisi awal (pojok kiri atas) dari area lari agar berada di tengah
-    const zoneStartX = (viewportWidth - runawayZoneWidth) / 2;
-    const zoneStartY = (viewportHeight - runawayZoneHeight) / 2;
-
-    // acak posisi tombol no kalo cursor mendekat
-    const newX = zoneStartX + Math.random() * (runawayZoneWidth - btnWidth);
-    const newY = zoneStartY + Math.random() * (runawayZoneHeight - btnHeight);
+    // acak posisi tombol no kalo dideketin cursor
+    const AreaXnew = AreaX + Math.random() * (LebarLari - LebarTombol);
+    const AreaYnew = AreaY + Math.random() * (TinggiLari - TinggiTombol);
 
     // posisi baru tombol no
-    tombolno.style.left = newX + 'px';
-    tombolno.style.top = newY + 'px';
+    tombolno.style.left = AreaXnew + 'px';
+    tombolno.style.top = AreaYnew + 'px';
 });
 
 // kalo tombol yes di klik
 tombolyes.addEventListener('click', () => {
-    // ganti isi container
-    document.querySelector('.container').innerHTML = '<h1>Yeyyy!!!</h1><img src="https://media1.tenor.com/m/G2tnkBFGsZkAAAAC/peach-and-goma-goma-and-peach.gif" alt="wii Bears">';
+    // ganti isi container pake yeyy sama ubah link gif
+    document.querySelector('.container').innerHTML = '<h1>Yeyyy!!!</h1><img src="https://media1.tenor.com/m/G2tnkBFGsZkAAAAC/peach-and-goma-goma-and-peach.gif" alt="Yeyyy">';
 });
