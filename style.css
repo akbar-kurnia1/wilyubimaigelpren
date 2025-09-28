@@ -1,0 +1,37 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff; /* bg putih */
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* webnya gapake scroll */
+}
+.container {
+    text-align: center;
+    position: relative;
+}
+h1 {
+    color: #000000; /* Warna judul */
+}
+.buttons {
+    margin-top: 20px;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+    
+}
+#tombolyes {
+    background-color: #4caf50;
+    color: white;
+}
+#tombolno {
+    background-color: #f44336;
+    color: white;
+    position: absolute; /* gak juga, tergantung js */
+}
