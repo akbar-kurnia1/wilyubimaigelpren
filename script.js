@@ -20,6 +20,7 @@ function pindahTombol() {
     tombolno.style.top = AreaYnew + 'px';
 }
 window.addEventListener('mousemove', (event) => {
+    setTimeout(500)
     if (!lagiLari) {
         const JarakAman = 80; 
         const mouseX = event.clientX;
