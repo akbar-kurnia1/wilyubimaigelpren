@@ -3,16 +3,16 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #ffffff; /* bg putih */
+    background-color: #ffffff;
     font-family: Arial, sans-serif;
-    overflow: hidden; /* webnya gapake scroll */
+    overflow: hidden;
 }
 .container {
     text-align: center;
     position: relative;
 }
 h1 {
-    color: #000000; /* Warna judul */
+    color: #000000;
 }
 .buttons {
     margin-top: 20px;
@@ -33,5 +33,5 @@ button {
 #tombolno {
     background-color: #f44336;
     color: white;
-    position: absolute; /* gak juga, tergantung js */
+    position: absolute;
 }
