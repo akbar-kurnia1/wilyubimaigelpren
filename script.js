@@ -1,46 +1,45 @@
-const tombolno = document.getElementById('tombolno');
-const tombolyes = document.getElementById('tombolyes');
-const posisiAwalKiri = tombolno.offsetLeft;
-const posisiAwalAtas = tombolno.offsetTop;
-tombolno.style.left = posisiAwalKiri + 'px';
-tombolno.style.top = posisiAwalAtas + 'px';
-let lagiLari = false;
-function pindahTombol() {
-    const lebar = window.innerWidth;
-    const tinggi = window.innerHeight;
-    const LebarTombol = tombolno.offsetWidth;
-    const TinggiTombol = tombolno.offsetHeight;
-    const LebarLari = 500;
-    const TinggiLari = 300;
-    const AreaX = (lebar - LebarLari) / 2;
-    const AreaY = (tinggi - TinggiLari) / 2;
-    const AreaXnew = AreaX + Math.random() * (LebarLari - LebarTombol);
-    const AreaYnew = AreaY + Math.random() * (TinggiLari - TinggiTombol);
-    tombolno.style.left = AreaXnew + 'px';
-    tombolno.style.top = AreaYnew + 'px';
+const noButton = document.getElementById('tombolno');
+const yesButton = document.getElementById('tombolyes');
+const initialLeftPosition = noButton.offsetLeft;
+const initialButtonPositionTop = noButton.offsetTop;
+noButton.style.left = initialLeftPosition + 'px';
+noButton.style.top = initialButtonPositionTop + 'px';
+let isRunning = false;
+function moveButton() {
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+    const buttonWidth = noButton.offsetWidth;
+    const buttonHeight = noButton.offsetHeight;
+    const runWidth = 500;
+    const runHeight = 300;
+    const areaX = (windowWidth - runWidth) / 2;
+    const areaY = (windowHeight - runHeight) / 2;
+    const areaXnew = areaX + Math.random() * (runWidth - buttonWidth);
+    const areaYnew = areaY + Math.random() * (runHeight - buttonHeight);
+    noButton.style.left = areaXnew + 'px';
+    noButton.style.top = areaYnew + 'px';
 }
 window.addEventListener('mousemove', (event) => {
-    setTimeout(500)
-    if (!lagiLari) {
-        const JarakAman = 80; 
+    if (!isRunning) {
+        const minimumSafeDistance = 80; 
         const mouseX = event.clientX;
         const mouseY = event.clientY;
-        const rectTombol = tombolno.getBoundingClientRect();
-        const bahayaKiri = rectTombol.left - JarakAman;
-        const bahayaKanan = rectTombol.right + JarakAman;
-        const bahayaAtas = rectTombol.top - JarakAman;
-        const bahayaBawah = rectTombol.bottom + JarakAman;
-        if (mouseX > bahayaKiri && mouseX < bahayaKanan && 
-            mouseY > bahayaAtas && mouseY < bahayaBawah) 
+        const noButtonRect = noButton.getBoundingClientRect();
+        const boundaryLeft = noButtonRect.left - minimumSafeDistance;
+        const boundaryRight = noButtonRect.right + minimumSafeDistance;
+        const boundaryTop = noButtonRect.top - minimumSafeDistance;
+        const boundaryBottom = noButtonRect.bottom + minimumSafeDistance;
+        if (mouseX > boundaryLeft && mouseX < boundaryRight && 
+            mouseY > boundaryTop && mouseY < boundaryBottom) 
         {
-            pindahTombol();
-            lagiLari = true;
+            moveButton();
+            isRunning = true;
             setTimeout(() => {
-                lagiLari = false;
+                isRunning = false;
             }, 300);
         }
     }
 });
-tombolyes.addEventListener('click', () => {
+yesButton.addEventListener('click', () => {
     document.querySelector('.container').innerHTML = '<h1>Yeyyy!!!</h1><img src="https://media1.tenor.com/m/G2tnkBFGsZkAAAAC/peach-and-goma-goma-and-peach.gif" alt="Yeyyy">';
 });
